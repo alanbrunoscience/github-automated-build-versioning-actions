@@ -6,8 +6,8 @@ on:
       - master
 
 env:
-  DOCKER_USERNAME: thedoorknobster
-  REPO: thedoorknobster/sample-app
+  # DOCKER_USERNAME: thedoorknobster
+  REPO: ${{ github.repository }}
 
 jobs:
   docker:

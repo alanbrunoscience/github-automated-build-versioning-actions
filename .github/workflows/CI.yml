@@ -5,10 +5,6 @@ on:
     branches:
       - master
 
-env:
-  # DOCKER_USERNAME: thedoorknobster
-  REPO: ${{ github.repository }}
-
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -39,12 +35,23 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Split string (Python)
+        run: |
+          import os
+          nameRepo = "${{ github.repository }}"
+          nameSplitRepo = nameRepo.split("/")
+          env_file = os.getenv('GITHUB_ENV')
+          with open(env_file, "a") as myfile:
+            myfile.write("GITHUB_REPO_OWNER=" + nameSplitRepo[0].lower() + "\n")
+            myfile.write("GITHUB_REPO_NAME=" + nameSplitRepo[1].lower())
+        shell: python
      
       - name: Build and Push
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ env.REPO }}:latest,${{ env.REPO }}:${{ steps.versioning.outputs.version }}
+          tags: ghcr.io/${{ env.GITHUB_REPO_OWNER }}/${{ env.GITHUB_REPO_NAME }}:latest, ghcr.io/${{ env.GITHUB_REPO_OWNER }}/${{ env.GITHUB_REPO_NAME }}:${{ steps.versioning.outputs.version }}
 
       - name: Create Release
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}

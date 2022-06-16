@@ -1,6 +1,5 @@
 # Github-Automated-Build-Versioning-Actions
 
-
 This is a sample repository to demonstrate a basic example of automating the process
 of build versioning and release creation.
 

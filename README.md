@@ -11,7 +11,7 @@ described in the Action.
 
 <br>
 
-##Observations:
+## Observations:
 
 - The video that explains this repository is here: [Automated Build Versioning With GitHub Actions and Conventional Commits by Roman Ivaniuk](https://youtu.be/jq3ruE-Coes)
 

@@ -9,6 +9,8 @@ semantic version based on the conventional commits' history.
 This version is then applied to the docker image as a tag, which is pushed to the repo
 described in the Action.
 
+<br>
+
 **Observations:**
 
 - The video that explains this repository is here: [Automated Build Versioning With GitHub Actions and Conventional Commits by Roman Ivaniuk](https://youtu.be/jq3ruE-Coes)

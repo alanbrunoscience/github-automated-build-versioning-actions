@@ -51,7 +51,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v3
         with:
-          push: true
+          push: false
           tags: ghcr.io/${{ env.GITHUB_REPO_OWNER }}/${{ env.GITHUB_REPO_NAME }}:latest, ghcr.io/${{ env.GITHUB_REPO_OWNER }}/${{ env.GITHUB_REPO_NAME }}:${{ steps.versioning.outputs.version }}
 
       - name: Create Release
